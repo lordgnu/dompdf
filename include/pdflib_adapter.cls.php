@@ -227,10 +227,10 @@ class PDFLib_Adapter implements Canvas {
           continue;
         }
 
-        $this->_pdf->set_parameter("FontOutline", "\{$face\}=\{$outline\}");
+        $this->_pdf->set_option(sprintf('FontOutline={%s=%s}', $face, $outline));
 
-        if ( !is_null($afm) ) {
-          $this->_pdf->set_parameter("FontAFM", "\{$face\}=\{$afm\}");
+        if (null !== $afm) {
+          $this->_pdf->set_option(sprintf('FontAFM={%s=%s}', $face, $afm));
         }
       }
     }
